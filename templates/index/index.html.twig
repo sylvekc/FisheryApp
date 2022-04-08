@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Ranczo nad jeziorkiem - Aktualności{% endblock %}
+
+{% block content %}
+
+    <main>
+
+        <header>
+
+            <h1 class="font-weight-bold text-uppercase text-center text p-3">Aktualności</h1>
+
+        </header>
+{% for post in posts %}
+        <article>
+
+            <div class="container col-lg-6 offset-lg-3">
+
+                <div class="bg-light text-body border border-dark p-3 mb-3">
+
+                    <h2 class="h3 font-weight-bold"> {{ post.title }} </h2>
+                    <small class="text-muted">Opublikowano: {{ post.createdAt|date('d.m.Y H:i')}} </small>
+                    <p>{{ post.content|raw }}<p/>
+
+                </div>
+
+            </div>
+
+        </article>
+
+{% endfor %}
+    </main>
+        <div class="navigation d-flex justify-content-center mt-5">
+            {{ knp_pagination_render(posts,'Pagination/bootstrap_v5_pagination.html.twig') }}
+        </div>
+
+{% endblock %}

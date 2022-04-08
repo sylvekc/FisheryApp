@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rezerwacja stanowiska{% endblock %}
+{% block content %}
+    <div class="container col-lg-6 offset-lg-3">
+        <div class="col">
+            <div class="mt-3">
+                <div class="text-center">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                </div>
+                <h1 class="text-center font-weight-bold">Zarezerwuj stanowisko</h1>
+                <div class="col-lg-12 bg-light text-body border border-dark p-5 mb-3">
+                    {% form_theme reservationsForm 'bootstrap_5_layout.html.twig' %}
+                    {{ form_start(reservationsForm, {'attr': {'class': 'd-flex flex-column'}}) }}
+                    {{ form_row(reservationsForm.position_nr) }}
+                    {{ form_row(reservationsForm.since_when)}}
+                    {{ form_row(reservationsForm.until_when)}}
+                    <div class="pt-5 text-center">
+                        <button class="badge btn-lg btn-success" type="submit">Zarezerwuj</button>
+                    </div>
+                    {{ form_end(reservationsForm) }}
+                </div>
+            </div>
+        </div>
+        <h1 class="text-center mt-5 font-weight-bold">Aktualne rezerwacje</h1>
+        <div class="col-lg-12 bg-light text-body border border-dark mb-3 p-0">
+            <div class="col table-responsive">
+
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="font-weight-bold" scope="col">Stanowisko</th>
+                            <th class="font-weight-bold" scope="col">Od</th>
+                            <th class="font-weight-bold" scope="col">Do</th>
+                            <th class="font-weight-bold" scope="col">Imię</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reservation in myReservations %}
+                            {% if (reservation.untilWhen>=currentDate) %}
+                            <tr>
+                                <td>{{ reservation.positionNr }}</td>
+                                <td>{{ reservation.sinceWhen|date('d.m.Y H:i')}}</td>
+                                <td>{{ reservation.untilWhen|date('d.m.Y H:i') }}</td>
+                                <td>{{ reservation.name }}</td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

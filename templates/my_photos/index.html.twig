@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyPhotosController!{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="container">
+        <h1 class="text-center p-3 font-weight-bold">Moje zdjęcia</h1>
+        <div class="bg-light text-body border border-dark p-3 mb-3">
+        {% for message in app.flashes('success') %}
+            <div class="mt-3 alert alert-success text-center">
+                {{message}}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{message}}
+            </div>
+        {% endfor %}
+            <div class="row">
+                {% for photo in myPhotos %}
+                    <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0">
+                        <div class="card-body d-block mx-auto bg-image hover-zoom">
+                            <div class="card d-flex justify-content-between">
+                                <div class="imageGallery1">
+                                    <a href="/photos/hosting/{{ photo.filename }}"><img width="300" height="250" src="/photos/hosting/{{ photo.filename }}" class="card-img-top" alt=""></a>
+                                </div>
+                                <div class="card-body">
+                                    <small class="text-muted list-group-item">Gatunek: {{ photo.type }}</small>
+                                    <small class="text-muted list-group-item">Długość:
+                                        {% if photo.length is empty %}
+                                            {{ '-' }}
+                                            {% else %}
+                                            {{ photo.length }}cm
+                                        {% endif %}
+                                    </small>
+                                    <small class="text-muted list-group-item">Waga:
+                                        {% if photo.weight is empty %}
+                                            {{ '-' }}
+                                        {% else %}
+                                            {{ photo.weight }}kg
+                                        {% endif %}
+                                        </small>
+                                    <small class="text-muted list-group-item">Dodał: {{ photo.name }}</small>
+                                    <small class="text-muted list-group-item">Wysłano: {{ photo.uploadedAt|date('d.m.Y') }}</small>
+
+                                        <p class="mt-3 mb-0 text-center">
+                                            <a href="{{ path('app_my_photos_delete',{'id': photo.id}) }}" class="badge btn-danger btn-lg text-decoration-none">Usuń</a>
+                                        </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

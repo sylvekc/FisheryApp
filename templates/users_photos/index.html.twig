@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wasze zdjęcia{% endblock %}
+    {% block content %}
+        <div class="container">
+            <h1 class="text-center p-3 font-weight-bold">Zdjęcia przesłane przez wędkarzy</h1>
+            <div class="bg-light text-body border border-dark p-3 mb-3">
+                <div class="row">
+                    {% for photo in usersPhotos %}
+                        <div class="col-md-8 offset-md-2 col-lg-4 offset-lg-0">
+                            <div class="card-body d-block mx-auto bg-image hover-zoom">
+                                <div class="card d-flex justify-content-between">
+                                    <div class="imageGallery1">
+                                        <a href="/photos/hosting/{{ photo.filename }}"><img width="300" height="250" src="/photos/hosting/{{ photo.filename }}" class="card-img-top" alt=""></a>
+                                    </div>
+                                    <div class="card-body">
+                                        <small class="text-muted list-group-item">Gatunek: {{ photo.type }}</small>
+                                        <small class="text-muted list-group-item">Długość:
+                                            {% if photo.length is empty %}
+                                                {{ '-' }}
+                                            {% else %}
+                                                {{ photo.length }}cm
+                                            {% endif %}
+                                        </small>
+                                        <small class="text-muted list-group-item">Waga:
+                                            {% if photo.weight is empty %}
+                                                {{ '-' }}
+                                            {% else %}
+                                                {{ photo.weight }}kg
+                                            {% endif %}
+                                        </small>
+                                        <small class="text-muted list-group-item">Dodał: {{ photo.name }}</small>
+                                        <small class="text-muted list-group-item">Wysłano: {{ photo.uploadedAt|date('d.m.Y') }}</small>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="navigation d-flex justify-content-center mt-5">
+            {{ knp_pagination_render(usersPhotos,'Pagination/bootstrap_v5_pagination.html.twig') }}
+        </div>
+{% endblock %}

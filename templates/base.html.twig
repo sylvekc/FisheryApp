@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Łowisko Ranczo nad jeziorkiem{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/simpleLightbox.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/mdb.min.css')}}">
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-xxl navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="ms-5"><a class="navbar-brand" href="{{path('index')}}"><img src="{{ asset('assets/logo.png') }}"width="50" height="50" class="me-2">Ranczo nad jeziorkiem</a></div>
+                <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <img src="{{ asset('assets/hamburger.png') }}">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 font-weight-bold ms-auto">
+                        <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='index'%}active{% endif %}" aria-current="page" href="{{path('index')}}">Aktualności</a></li>
+                        <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_about_fishery'%}active{% endif %}" href="{{ path('app_about_fishery') }}">O łowisku</a></li>
+                        <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_rules'%}active{% endif %}" href="{{ path('app_rules') }}">Regulamin łowiska</a></li>
+                        <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_fishery_reservations'%}active{% endif %}" href="{{path('app_fishery_reservations')}}">Rezerwacja stanowiska</a></li>
+                        <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_users_photos'%}active{% endif %}" href="{{path('app_users_photos')}}">Wasze zdjęcia</a></li>
+                        {% if app.user == false %}
+                        <li> <a class="nav-link {% if app.request.get('_route')=='app_register'%}active{% endif %}" href="{{path('app_register')}}">Zarejestruj się</a></li>
+                    </ul>
+
+
+                    <ul class="navbar-nav mb-2 mb-lg-0 font-weight-bold">
+                        <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_login'%}active{% endif %}" href="{{ path('app_login') }}">Zaloguj się</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_add_photo'%}active{% endif %}" aria-current="page" href="{{path('app_add_photo')}}">Dodaj zdjęcie</a></li>
+                    <li class="nav-item"><a class="nav-link {% if app.request.get('_route')=='app_my_photos'%}active{% endif %}" aria-current="page" href="{{path('app_my_photos')}}">Moje zdjęcia</a></li>
+                    </ul>
+
+                    <ul class="navbar-nav mb-2 mb-lg-0 font-weight-bold">
+                    <li class="nav-item"><a class="nav-link" href="{{path('app_logout')}}">Wyloguj się</a></li>
+                    </ul>
+            </div>
+                        {% endif %}
+            </div>
+
+        </nav>
+    </header>
+
+{% block content %}
+{% endblock %}
+{% block javascripts %}
+    <script>
+        if ( window.history.replaceState )
+        {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+    <script src="{{asset('assets/js/jquery-3.6.0.slim.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/simpleLightbox.min.js')}}"></script>
+    <script src="{{asset('assets/js/scripts.js')}}"></script>
+    <script src="{{asset('assets/js/mdb.min.js')}}"></script>
+{% endblock %}
+
+</body>
+
+
+<footer class="bg-dark text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3 text-light" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright
+        <a class="text-light" href="#"> Sylwester Cebula</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+</html>
