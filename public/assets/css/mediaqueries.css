@@ -1,0 +1,97 @@
+
+.logo-font
+{
+    font-family: 'Pacifico', cursive;
+}
+
+.font
+{
+    font-family: "Biome", serif;
+    font-size: 14.5px;
+}
+
+.navbar-brand
+{
+    font-size: 22px;
+}
+
+.title-font
+{
+    font-family: 'Noto Serif', serif;
+}
+
+
+
+
+
+@media screen and (min-width: 43rem) and (max-width: 62rem)
+{
+    .container-fluid
+    {
+        font-size: 40px;
+        padding: 20px;
+    }
+    .navbar, .navbar-brand, footer, h1
+    {
+        font-size: 50px;
+    }
+    .logo, .toggler
+    {
+        width: 70px;
+        height: 70px;
+    }
+    .page-link
+    {
+        font-size: 50px;
+    }
+    .h3, p, ul, .table
+    {
+        font-size: 40px;
+    }
+    .text-muted
+    {
+        font-size: 35px;
+    }
+    iframe
+    {
+        height: 500px;
+        width: 600px;
+    }
+    .badge
+    {
+        font-size: 40px;
+    }
+
+    img
+    {
+        width: auto;
+        height: auto;
+        border-radius: 1.5%;
+    }
+
+    .form-select, .form-control
+    {
+        font-size: 40px;
+    }
+
+    .form-check-input
+    {
+        margin-top: 50px;
+        transform: scale(3);
+        vertical-align: middle;
+        position: relative;
+        bottom: -10px;
+        font-size: 30px;
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
