@@ -3,9 +3,17 @@
 
 ## General Information
 - A web application for a fishery that allows logged-in users to book a position at the time of their choice, and to publish photos of the caught fish.
-- App was written in PHP 8 and Symfony 6 using PHP Storm
-- App is avalaible [_here_](https://sylwekcebula.pl).
-## Screenshot
+- The application was adapted to be displayed on monitors and smartphones.
+- App is avalaible [_here_](https://sylwester-cebula.pl).
+
+## Technologies used
+- PHP 8
+- Symfony 6
+- Twig HTML
+- CSS
+- Bootstrap
+
+## Screenshots
 ![image](https://user-images.githubusercontent.com/100083050/162533648-48aab18e-0705-47d0-9938-a2d0d1a1bb76.png)
 
 ![image](https://user-images.githubusercontent.com/100083050/162533812-5a70bf38-cef5-4306-9df9-8170b808852c.png)
