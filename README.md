@@ -4,7 +4,7 @@
 ## General Information
 - A web application for a fishery that allows logged-in users to book a position at the time of their choice, and to publish photos of the caught fish.
 - The application was adapted to be displayed on monitors and smartphones.
-- The application has a simple CMS for editing posts on the main page, accessed by an account with an administrator role.
+- The application has a simple CMS for editing posts on the main page by CKEditor, accessed by an account with an administrator role.
 - Photos added by users have to be approved by the administrator before they become public.
 - App is avalaible [_here_](https://sylwester-cebula.pl).
 
